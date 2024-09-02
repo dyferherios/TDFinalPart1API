@@ -93,10 +93,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Player'
+      required:
+        - name
+        - slogan
+  
     Player:
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
         name:
           type: string
-        age:
+          example: Lionel Messi
+        number:
           type: integer
+          example: 10
+        strongFoot:
+          type: string
+          enum: [Left, Right]
+          example: Left
+      required:
+        - name
+        - number
+        - strongFoot
