@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: TD Final Part1 API
+  version: 1.0.0
+servers:
+  - url: "https://localhost.com"
+paths:
+  /allCompetitions:
+    get:
+      tags:
+        - Get competitions list
+      summary: Get all competition list
+      operationId: getCompetitions
+      responses:
+        '200':
+          description: Competition list recupered successfully
+          content:
+            application/json:    
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Competition'
+    post:
+      tags:
+        - Create competition
+      summary: Create a new competition
+      operationId: createCompetiton
+      responses:
+        '201':
+          description: Competition created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Competition'
+  /allTeams:
+    get:
+      tags:
+        - Get teams list
+      summary: Get all team list
+      operationId: getTeams
+      responses:
+        '200':
+          description: Team list recupered successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+    post: 
+      tags:
+        - Create a team
+      summary: Create new team
+      operationId: createTeam
+      responses:
+        '201':
+          description: Team created successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+
+components:
+  schemas:
+    Competition:
+      type: object
+      properties:
+        name:
+          type: string
+          example: LIGA
+        region:
+          type: string
+          example: Espagne
+      required:
+        - name
+        - region
+    Team:
+      type: object
+      properties:
+        name:
+          type: string
+        slogan:
+          type: string
+        competitionList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Competition'
+        playerList:
+          type: array
+          items:
+            $ref: '#/components/schemas/Player'
+    Player:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
