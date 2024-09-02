@@ -75,6 +75,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Team'
+
   /allPlayers:
     post:
       tags:
@@ -113,6 +114,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Player'
+  
                 
 components:
   schemas:
